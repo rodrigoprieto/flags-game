@@ -197,6 +197,8 @@ const countries = [
 
 let currentQuestion = 0;
 let score = 0;
+let correctAnswers = 0;
+let incorrectAnswers = 0;
 let gameQuestions = [];
 
 function shuffleArray(array) {
@@ -260,10 +262,11 @@ function verifyAnswer() {
 
     if (userAnswer === correctAnswer) {
         score++;
+        correctAnswers++;
         resultElement.textContent = 'Correct!';
         resultElement.style.color = 'green';
     } else {
-        score--;
+        incorrectAnswers++;
         resultElement.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
         resultElement.style.color = 'red';
     }
@@ -294,10 +297,17 @@ function endGame() {
     const quizScreen = document.getElementById('quiz-screen');
     const endMessage = document.getElementById('end-message');
     const finalScore = document.getElementById('final-score');
+    const correctAnswersElement = document.getElementById('correct-answers');
+    const incorrectAnswersElement = document.getElementById('incorrect-answers');
+    const percentageElement = document.getElementById('percentage');
     
     const randomMessage = endMessages[Math.floor(Math.random() * endMessages.length)];
     endMessage.textContent = randomMessage;
-    finalScore.textContent = `Sua pontuação final é: ${score}`;
+    finalScore.textContent = `Pontuação final: ${score}`;
+    correctAnswersElement.textContent = `Acertos: ${correctAnswers}`;
+    incorrectAnswersElement.textContent = `Erros: ${incorrectAnswers}`;
+    const percentage = (correctAnswers / gameQuestions.length) * 100;
+    percentageElement.textContent = `Porcentagem de acertos: ${percentage.toFixed(2)}%`;
     
     quizScreen.style.display = 'none';
     endScreen.style.display = 'block';
@@ -306,6 +316,8 @@ function endGame() {
 function restartGame() {
     currentQuestion = 0;
     score = 0;
+    correctAnswers = 0;
+    incorrectAnswers = 0;
     generateGameQuestions();
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('end-screen').style.display = 'none';
