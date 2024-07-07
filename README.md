@@ -1,4 +1,4 @@
-# flags-game# Jogo de Quiz de Bandeiras
+# Jogo de Quiz de Bandeiras
 
 Este é um jogo de quiz interativo sobre bandeiras de países. O objetivo é testar e melhorar seu conhecimento sobre as bandeiras do mundo de uma forma divertida e educativa.
 
