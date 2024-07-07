@@ -209,7 +209,7 @@ function shuffleArray(array) {
 function generateGameQuestions() {
     gameQuestions = [...countries];
     shuffleArray(gameQuestions);
-    gameQuestions = gameQuestions.slice(0, 20);
+    gameQuestions = gameQuestions.slice(0, 5);
 }
 
 function displayQuestion() {
@@ -268,7 +268,7 @@ function verifyAnswer() {
         resultElement.style.color = 'red';
     }
 
-    scoreElement.textContent = `Score: ${score}`;
+    scoreElement.textContent = `Pontuação: ${score}`;
 
     setTimeout(() => {
         currentQuestion++;
