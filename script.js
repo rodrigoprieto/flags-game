@@ -1,24 +1,23 @@
 const countries = [
-    { name: 'Brasil', flag: 'https://flagcdn.com/w320/br.png' },
-    { name: 'Estados Unidos', flag: 'https://flagcdn.com/w320/us.png' },
-    { name: 'Canadá', flag: 'https://flagcdn.com/w320/ca.png' },
-    { name: 'Reino Unido', flag: 'https://flagcdn.com/w320/gb.png' },
-    { name: 'França', flag: 'https://flagcdn.com/w320/fr.png' },
-    { name: 'Alemanha', flag: 'https://flagcdn.com/w320/de.png' },
-    { name: 'Japão', flag: 'https://flagcdn.com/w320/jp.png' },
-    { name: 'Austrália', flag: 'https://flagcdn.com/w320/au.png' },
-    { name: 'Índia', flag: 'https://flagcdn.com/w320/in.png' },
-    { name: 'África do Sul', flag: 'https://flagcdn.com/w320/za.png' },
-    { name: 'China', flag: 'https://flagcdn.com/w320/cn.png' },
-    { name: 'Rússia', flag: 'https://flagcdn.com/w320/ru.png' },
-    { name: 'Itália', flag: 'https://flagcdn.com/w320/it.png' },
-    { name: 'Espanha', flag: 'https://flagcdn.com/w320/es.png' },
-    { name: 'México', flag: 'https://flagcdn.com/w320/mx.png' },
+    { name: 'Afeganistão', flag: 'https://flagcdn.com/w320/af.png' },
+    { name: 'Albânia', flag: 'https://flagcdn.com/w320/al.png' },
+    { name: 'Argélia', flag: 'https://flagcdn.com/w320/dz.png' },
+    { name: 'Andorra', flag: 'https://flagcdn.com/w320/ad.png' },
+    { name: 'Angola', flag: 'https://flagcdn.com/w320/ao.png' },
+    { name: 'Antígua e Barbuda', flag: 'https://flagcdn.com/w320/ag.png' },
     { name: 'Argentina', flag: 'https://flagcdn.com/w320/ar.png' },
-    { name: 'Holanda', flag: 'https://flagcdn.com/w320/nl.png' },
-    { name: 'Suécia', flag: 'https://flagcdn.com/w320/se.png' },
-    { name: 'Noruega', flag: 'https://flagcdn.com/w320/no.png' },
-    { name: 'Dinamarca', flag: 'https://flagcdn.com/w320/dk.png' }
+    { name: 'Armênia', flag: 'https://flagcdn.com/w320/am.png' },
+    { name: 'Austrália', flag: 'https://flagcdn.com/w320/au.png' },
+    { name: 'Áustria', flag: 'https://flagcdn.com/w320/at.png' },
+    { name: 'Azerbaijão', flag: 'https://flagcdn.com/w320/az.png' },
+    { name: 'Bahamas', flag: 'https://flagcdn.com/w320/bs.png' },
+    { name: 'Bahrein', flag: 'https://flagcdn.com/w320/bh.png' },
+    { name: 'Bangladesh', flag: 'https://flagcdn.com/w320/bd.png' },
+    { name: 'Barbados', flag: 'https://flagcdn.com/w320/bb.png' },
+    // ... (all other countries)
+    { name: 'Iêmen', flag: 'https://flagcdn.com/w320/ye.png' },
+    { name: 'Zâmbia', flag: 'https://flagcdn.com/w320/zm.png' },
+    { name: 'Zimbábue', flag: 'https://flagcdn.com/w320/zw.png' }
 ];
 
 let currentQuestion = 0;
@@ -116,13 +115,17 @@ const endMessages = [
 ];
 
 function endGame() {
-    const gameContainer = document.getElementById('game-container');
+    const endScreen = document.getElementById('end-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const endMessage = document.getElementById('end-message');
+    const finalScore = document.getElementById('final-score');
+    
     const randomMessage = endMessages[Math.floor(Math.random() * endMessages.length)];
-    gameContainer.innerHTML = `
-        <h1>${randomMessage}</h1>
-        <p>Sua pontuação final é: ${score}</p>
-        <button onclick="restartGame()">Jogar Novamente</button>
-    `;
+    endMessage.textContent = randomMessage;
+    finalScore.textContent = `Sua pontuação final é: ${score}`;
+    
+    quizScreen.style.display = 'none';
+    endScreen.style.display = 'block';
 }
 
 function restartGame() {
@@ -130,6 +133,7 @@ function restartGame() {
     score = 0;
     generateGameQuestions();
     document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('end-screen').style.display = 'none';
     document.getElementById('quiz-screen').style.display = 'block';
     displayQuestion();
     document.getElementById('score').textContent = 'Pontuação: 0';
@@ -145,3 +149,4 @@ function startGame() {
 
 document.getElementById('verify-btn').addEventListener('click', verifyAnswer);
 document.getElementById('start-btn').addEventListener('click', startGame);
+document.getElementById('restart-btn').addEventListener('click', restartGame);
