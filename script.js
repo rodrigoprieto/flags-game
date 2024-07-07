@@ -200,6 +200,7 @@ let score = 0;
 let correctAnswers = 0;
 let incorrectAnswers = 0;
 let gameQuestions = [];
+let totalQuestions = 10;
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -211,7 +212,7 @@ function shuffleArray(array) {
 function generateGameQuestions() {
     gameQuestions = [...countries];
     shuffleArray(gameQuestions);
-    gameQuestions = gameQuestions.slice(0, 5);
+    gameQuestions = gameQuestions.slice(0, totalQuestions);
 }
 
 function displayQuestion() {

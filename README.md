@@ -8,7 +8,7 @@ Este é um jogo de quiz interativo sobre bandeiras de países. O objetivo é tes
 2. Escolha entre as cinco opções apresentadas o nome do país correspondente à bandeira.
 3. Clique em "VERIFICAR" para confirmar sua resposta.
 4. Você receberá feedback imediato sobre sua resposta.
-5. O jogo consiste em 5 perguntas.
+5. O jogo consiste em 10 perguntas.
 6. No final, você verá sua pontuação total, o número de respostas corretas e incorretas, e a porcentagem de acertos.
 
 ## Características
