@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flag Quiz Game</title>
+    <title>Jogo de Quiz de Bandeiras</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="game-container">
-        <h1>Flag Quiz Game</h1>
-        <div id="question-container">
-            <img id="flag-image" src="" alt="Country Flag">
-            <p id="question">What is the country of this flag?</p>
+        <div id="start-screen">
+            <h1>Jogo de Quiz de Bandeiras</h1>
+            <button id="start-btn">Iniciar Jogo</button>
         </div>
-        <div id="options-container"></div>
-        <button id="verify-btn">VERIFY</button>
-        <p id="result"></p>
-        <p id="score">Score: 0</p>
+        <div id="quiz-screen" style="display: none;">
+            <h1>Jogo de Quiz de Bandeiras</h1>
+            <div id="question-container">
+                <img id="flag-image" src="" alt="Bandeira do País">
+                <p id="question">De qual país é esta bandeira?</p>
+            </div>
+            <div id="options-container"></div>
+            <button id="verify-btn">VERIFICAR</button>
+            <p id="result"></p>
+            <p id="score">Pontuação: 0</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

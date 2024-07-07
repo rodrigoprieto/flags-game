@@ -1,15 +1,24 @@
 const countries = [
-    { name: 'United States', flag: 'https://flagcdn.com/w320/us.png' },
-    { name: 'Canada', flag: 'https://flagcdn.com/w320/ca.png' },
-    { name: 'United Kingdom', flag: 'https://flagcdn.com/w320/gb.png' },
-    { name: 'France', flag: 'https://flagcdn.com/w320/fr.png' },
-    { name: 'Germany', flag: 'https://flagcdn.com/w320/de.png' },
-    { name: 'Japan', flag: 'https://flagcdn.com/w320/jp.png' },
-    { name: 'Australia', flag: 'https://flagcdn.com/w320/au.png' },
-    { name: 'Brazil', flag: 'https://flagcdn.com/w320/br.png' },
-    { name: 'India', flag: 'https://flagcdn.com/w320/in.png' },
-    { name: 'South Africa', flag: 'https://flagcdn.com/w320/za.png' },
-    // Add more countries as needed
+    { name: 'Brasil', flag: 'https://flagcdn.com/w320/br.png' },
+    { name: 'Estados Unidos', flag: 'https://flagcdn.com/w320/us.png' },
+    { name: 'Canadá', flag: 'https://flagcdn.com/w320/ca.png' },
+    { name: 'Reino Unido', flag: 'https://flagcdn.com/w320/gb.png' },
+    { name: 'França', flag: 'https://flagcdn.com/w320/fr.png' },
+    { name: 'Alemanha', flag: 'https://flagcdn.com/w320/de.png' },
+    { name: 'Japão', flag: 'https://flagcdn.com/w320/jp.png' },
+    { name: 'Austrália', flag: 'https://flagcdn.com/w320/au.png' },
+    { name: 'Índia', flag: 'https://flagcdn.com/w320/in.png' },
+    { name: 'África do Sul', flag: 'https://flagcdn.com/w320/za.png' },
+    { name: 'China', flag: 'https://flagcdn.com/w320/cn.png' },
+    { name: 'Rússia', flag: 'https://flagcdn.com/w320/ru.png' },
+    { name: 'Itália', flag: 'https://flagcdn.com/w320/it.png' },
+    { name: 'Espanha', flag: 'https://flagcdn.com/w320/es.png' },
+    { name: 'México', flag: 'https://flagcdn.com/w320/mx.png' },
+    { name: 'Argentina', flag: 'https://flagcdn.com/w320/ar.png' },
+    { name: 'Holanda', flag: 'https://flagcdn.com/w320/nl.png' },
+    { name: 'Suécia', flag: 'https://flagcdn.com/w320/se.png' },
+    { name: 'Noruega', flag: 'https://flagcdn.com/w320/no.png' },
+    { name: 'Dinamarca', flag: 'https://flagcdn.com/w320/dk.png' }
 ];
 
 let currentQuestion = 0;
@@ -98,12 +107,21 @@ function verifyAnswer() {
     }, 2000);
 }
 
+const endMessages = [
+    "Parabéns! Você é um expert em bandeiras!",
+    "Ótimo trabalho! Que tal tentar superar sua pontuação?",
+    "Impressionante! Você tem um ótimo conhecimento de bandeiras!",
+    "Excelente! Vamos jogar novamente e aprender ainda mais?",
+    "Muito bem! Sua jornada pelo mundo das bandeiras está apenas começando!"
+];
+
 function endGame() {
     const gameContainer = document.getElementById('game-container');
+    const randomMessage = endMessages[Math.floor(Math.random() * endMessages.length)];
     gameContainer.innerHTML = `
-        <h1>Game Over</h1>
-        <p>Your final score is: ${score}</p>
-        <button onclick="restartGame()">Play Again</button>
+        <h1>${randomMessage}</h1>
+        <p>Sua pontuação final é: ${score}</p>
+        <button onclick="restartGame()">Jogar Novamente</button>
     `;
 }
 
@@ -111,12 +129,19 @@ function restartGame() {
     currentQuestion = 0;
     score = 0;
     generateGameQuestions();
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
     displayQuestion();
-    document.getElementById('score').textContent = 'Score: 0';
+    document.getElementById('score').textContent = 'Pontuação: 0';
     document.getElementById('result').textContent = '';
 }
 
-document.getElementById('verify-btn').addEventListener('click', verifyAnswer);
+function startGame() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    generateGameQuestions();
+    displayQuestion();
+}
 
-generateGameQuestions();
-displayQuestion();
+document.getElementById('verify-btn').addEventListener('click', verifyAnswer);
+document.getElementById('start-btn').addEventListener('click', startGame);
