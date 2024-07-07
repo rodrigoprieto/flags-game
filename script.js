@@ -264,11 +264,11 @@ function verifyAnswer() {
     if (userAnswer === correctAnswer) {
         score++;
         correctAnswers++;
-        resultElement.textContent = 'Correct!';
+        resultElement.textContent = 'Correto!';
         resultElement.style.color = 'green';
     } else {
         incorrectAnswers++;
-        resultElement.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+        resultElement.textContent = `Incorreto. A resposta correta é ${correctAnswer}.`;
         resultElement.style.color = 'red';
     }
 
